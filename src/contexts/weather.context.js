@@ -100,7 +100,9 @@ export const WeatherProvider = ({ children }) => {
           getRequest(petUrlCreator(lngLatArr, seasonStartYear))
         ]);
 
-        console.log('calling');
+        console.log('ACIS precip return: ', observedPrecip);
+        console.log('Forecasted precip return: ', forecastPrecip);
+        console.log('Irrigation API return: ', irrigationData);
 
         setWeatherData({
           qpf: forecastPrecip.qpf,
