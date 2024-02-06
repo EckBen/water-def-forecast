@@ -11,7 +11,8 @@ const TOOL_NAME = 'WATER-DEF-FORECAST';
 const PERCENTILES = [0,10,25,50,75,90,100];
 
 // URL for cors-proxy API's forecast endpoint
-const CORS_PROXY_FORECAST_URL = 'http://0.0.0.0:8787/month-precip-forecast';
+// const CORS_PROXY_FORECAST_URL = 'http://0.0.0.0:8787/month-precip-forecast';
+const CORS_PROXY_FORECAST_URL = 'https://cors-proxy.benlinux915.workers.dev/month-precip-forecast';
 
 // ACIS server url
 const ACIS_GRID_URL = 'https://grid2.rcc-acis.org/GridData';
