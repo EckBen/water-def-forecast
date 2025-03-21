@@ -11,14 +11,15 @@ const TOOL_NAME = 'WATER-DEF-FORECAST';
 const PERCENTILES = [0,10,25,50,75,90,100];
 
 // URL for cors-proxy API's forecast endpoint
-// const CORS_PROXY_FORECAST_URL = 'http://0.0.0.0:8787/month-precip-forecast';
-const CORS_PROXY_FORECAST_URL = 'https://cors-proxy.benlinux915.workers.dev/month-precip-forecast';
+// const FORECAST_API_URL = 'http://0.0.0.0:8787/getOutlook';
+const FORECAST_API_URL = 'https://precip-outlook.rcc-acis.workers.dev/getOutlook';
+// const FORECAST_API_URL = 'https://cors-proxy.benlinux915.workers.dev/month-precip-forecast';
 
 // ACIS server url
 const ACIS_GRID_URL = 'https://grid2.rcc-acis.org/GridData';
 
 // Irrigation API url
-const IRRIGATION_API_URL_CONSTRUCTOR = (coords, year) => `https://x6xfv2cdrl.execute-api.us-east-1.amazonaws.com/production/irrigation?lat=${coords[1]}&lon=${coords[0]}&year=${year}`;
+const IRRIGATION_API_URL_CONSTRUCTOR = (coords, year) => `https://csf-irrigation-api-worker.rcc-acis.workers.dev/?lat=${coords[1]}&lon=${coords[0]}&year=${year}`;
 
 const TODAY = new Date();
 const thisYear = TODAY.getFullYear();
@@ -30,7 +31,7 @@ export const ConstantsContext = createContext({
   cropInfo: MODEL_DATA.cropinfo,
   soilData: MODEL_DATA.soildata,
   percentiles: PERCENTILES,
-  fcstUrl: CORS_PROXY_FORECAST_URL,
+  fcstUrl: FORECAST_API_URL,
   acisUrl: ACIS_GRID_URL,
   petUrlCreator: IRRIGATION_API_URL_CONSTRUCTOR,
   today: TODAY,
@@ -44,7 +45,7 @@ export const ConstantsProvider = ({ children }) => {
     cropInfo: MODEL_DATA.cropinfo,
     soilData: MODEL_DATA.soildata,
     percentiles: PERCENTILES,
-    fcstUrl: CORS_PROXY_FORECAST_URL,
+    fcstUrl: FORECAST_API_URL,
     acisUrl: ACIS_GRID_URL,
     petUrlCreator: IRRIGATION_API_URL_CONSTRUCTOR,
     today: TODAY,

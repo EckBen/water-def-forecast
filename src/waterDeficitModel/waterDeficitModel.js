@@ -133,7 +133,7 @@ function getSingleCropCoeff(numdays,croptype) {
 }
 
 
-export function runWaterDeficitModel(precip,pet,initDeficit,startDate,plantingDate,soilcap,croptype,isContinuation) {
+export function runWaterDeficitModel(precip,pet,initDeficit,startDate,plantingDate,irrigationDateIdx,soilcap,croptype,isContinuation) {
     // -----------------------------------------------------------------------------------------
     // Calculate daily water deficit (inches) from daily precipitation, evapotranspiration, soil drainage and runoff.
     //
@@ -145,13 +145,14 @@ export function runWaterDeficitModel(precip,pet,initDeficit,startDate,plantingDa
     //    - bounded below by the wilting point ( = soil moisture at wilting point minus soil moisture at field capacity )
     //    - bounded above by saturation ( = soil moisture at saturation minus soil moisture at field capacity)
     //
-    //  precip       : daily precipitation array (in) : (NRCC ACIS grid 3)
-    //  pet          : daily potential evapotranspiration array (in) : (grass reference PET obtained from NRCC MORECS model output)
-    //  initDeficit  : water deficit used to initialize the model
-    //  startDate    : date of model initialization
-    //  plantingDate : date crop was planted
-    //  soilcap      : soil water capacity ('high','medium','low')
-    //  croptype     : type of crop
+    //  precip              : daily precipitation array (in) : (NRCC ACIS grid 3)
+    //  pet                 : daily potential evapotranspiration array (in) : (grass reference PET obtained from NRCC MORECS model output)
+    //  initDeficit         : water deficit used to initialize the model
+    //  startDate           : date of model initialization
+    //  plantingDate        : date crop was planted
+    //  irrigationDateIdx   : index when irrigation was applied
+    //  soilcap             : soil water capacity ('high','medium','low')
+    //  croptype            : type of crop
     //
     // -----------------------------------------------------------------------------------------
 
@@ -214,6 +215,11 @@ export function runWaterDeficitModel(precip,pet,initDeficit,startDate,plantingDa
     // Loop through all days, starting with the second day (we already have the deficit for the initial day from model initialization)
     const startIdx = isContinuation ? 0 : 1;
     for (var idx=startIdx; idx < pet.length; idx++) {
+        // if irrigation occurred on this date, reset deficit to 0
+        if (irrigationDateIdx === idx) {
+            deficit = 0;
+        }
+        
         // increment as we advance through the growth stages of the plant
         daysSincePlanting += 1
 

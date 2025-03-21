@@ -99,6 +99,7 @@ export default function WaterDeficitGraph({ soilCap, todayIdx, today, irrigation
       outside: true,
       split: false,
       useHTML: true,
+      valueDecimals: 2
       // formatter: function () {
       //   if (!this || !this.points) return '';
 

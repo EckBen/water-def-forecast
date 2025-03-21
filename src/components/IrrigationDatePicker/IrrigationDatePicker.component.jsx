@@ -13,7 +13,6 @@ export default function IrrigationDatePicker() {
       label='Last Irrigation Date'
       value={userSelections.irrigationDate}
       onChange={(newValue) => setterFuncs.setIrrigationDate(newValue)}
-      disabled
     />
   );
 }
