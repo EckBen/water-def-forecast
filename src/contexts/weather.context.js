@@ -171,7 +171,8 @@ export const WeatherProvider = ({ children }) => {
       startPetIdx = qpfStartIdx + qpfStartTrim;
       endPetIdx = startPetIdx + qpf.values.length - qpfStartTrim;
       irrigationDateIdxInChunk = pet.dates.slice(startPetIdx, endPetIdx).findIndex(d => d === irrigationDateStr);
-      const { deficitDaily: qpfDeficits } = runWaterDeficitModel(qpf.values.slice(qpfStartTrim),pet.values.slice(startPetIdx, endPetIdx),initDeficit,pet.dates[startPetIdx],plantDateStr, irrigationDateIdxInChunk ,waterCapacity,cropType,true);
+      const cleanQpfs = qpf.values.slice(qpfStartTrim).map(v => v === -999 ? 0 : v);
+      const { deficitDaily: qpfDeficits } = runWaterDeficitModel(cleanQpfs,pet.values.slice(startPetIdx, endPetIdx),initDeficit,pet.dates[startPetIdx],plantDateStr, irrigationDateIdxInChunk ,waterCapacity,cropType,true);
       const qpfSeries = Array(startPetIdx).fill(null).concat(qpfDeficits);
 
       initDeficit = qpfDeficits[qpfDeficits.length - 1];
