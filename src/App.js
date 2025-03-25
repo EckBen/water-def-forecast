@@ -20,6 +20,12 @@ export default function App() {
         newLocationsCallback={updateStoredLocations}
         token={process.env.REACT_APP_MAPBOX_TOKEN}
         modalZIndex={150}
+        bbox={{
+          north: 49.458,
+          south: 35.5,
+          east: -66.833,
+          west: -97.5
+        }}
       />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '200px' }}>
