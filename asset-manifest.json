@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/water-def-forecast/static/css/main.314f9de9.css",
+    "main.js": "/water-def-forecast/static/js/main.4a546bf0.js",
+    "index.html": "/water-def-forecast/index.html",
+    "static/media/pin-blue.svg": "/water-def-forecast/static/media/pin-blue.a84f9033aac1da64f933.svg",
+    "static/media/pin-red.svg": "/water-def-forecast/static/media/pin-red.8ec759728dab1e5998f4.svg",
+    "main.314f9de9.css.map": "/water-def-forecast/static/css/main.314f9de9.css.map",
+    "main.4a546bf0.js.map": "/water-def-forecast/static/js/main.4a546bf0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.314f9de9.css",
+    "static/js/main.4a546bf0.js"
+  ]
+}
