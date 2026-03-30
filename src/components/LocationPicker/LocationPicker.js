@@ -39,7 +39,7 @@ export default function LocationPicker(props) {
     if (props.selected === '') {
       props.newLocationsCallback(defaultId, defaultLocation);
     }
-  }, []);
+  }, [props]);
 
   // Handles moving the modal div to allow and disable clicking on the main page
   useEffect(() => {
