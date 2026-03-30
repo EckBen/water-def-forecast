@@ -12,6 +12,8 @@ import WaterDeficitGraph from './components/WaterDeficitChart/WaterDeficitChart.
 export default function App() {
   const { locations, selectedLocation, updateStoredLocations } = useContext(LocationsContext);
 
+  console.log('x');
+
   return (
     <div className="App">
       <LocationPicker
