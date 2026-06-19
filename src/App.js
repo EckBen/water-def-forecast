@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 
+
 import { LocationsContext } from './contexts/locations.context';
 
+import NrccWrapper from './components/nrcc-wrapper/NrccWrapper';
 import LocationPicker from './components/LocationPicker/LocationPicker';
 import WaterCapacitySelector from './components/WaterCapacitySelector/WaterCapacitySelector.component';
 import CropTypeSelector from './components/CropTypeSelector/CropTypeSelector.component';
@@ -12,32 +14,32 @@ import WaterDeficitGraph from './components/WaterDeficitChart/WaterDeficitChart.
 export default function App() {
   const { locations, selectedLocation, updateStoredLocations } = useContext(LocationsContext);
 
-  console.log('x');
-
   return (
-    <div className="App">
-      <LocationPicker
-        locations={locations}
-        selected={selectedLocation}
-        newLocationsCallback={updateStoredLocations}
-        token={process.env.REACT_APP_MAPBOX_TOKEN}
-        modalZIndex={150}
-        bbox={{
-          north: 49.458,
-          south: 35.5,
-          east: -66.833,
-          west: -97.5
-        }}
-      />
+    <NrccWrapper>
+      <div className="App">
+        <LocationPicker
+          locations={locations}
+          selected={selectedLocation}
+          newLocationsCallback={updateStoredLocations}
+          token={process.env.REACT_APP_MAPBOX_TOKEN}
+          modalZIndex={150}
+          bbox={{
+            north: 49.458,
+            south: 35.5,
+            east: -66.833,
+            west: -97.5
+          }}
+        />
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '200px' }}>
-        <WaterCapacitySelector />
-        <CropTypeSelector />
-        <PlantDatePicker />
-        <IrrigationDatePicker />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '200px' }}>
+          <WaterCapacitySelector />
+          <CropTypeSelector />
+          <PlantDatePicker />
+          <IrrigationDatePicker />
+        </div>
+
+        <WaterDeficitGraph />
       </div>
-
-      <WaterDeficitGraph />
-    </div>
+    </NrccWrapper>
   );
 }
